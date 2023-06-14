@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { Category } from './category.schema';
+import { Product } from './product.schema';
 
 export type StoreDocument = HydratedDocument<Store>;
 
@@ -21,8 +22,11 @@ export class Store {
   @Prop({ required: true, default: false })
   isVerified: boolean;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Category' })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }] })
   storeCategory: Category[];
+
+  @Prop({ tyep: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }] })
+  storeProducts: Product[];
 
   @Prop({ default: Date.now })
   createdAt: Date;

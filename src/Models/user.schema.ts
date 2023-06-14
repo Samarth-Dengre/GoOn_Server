@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
-import { Order } from './orders.schema';
+import { Order } from './order.schema';
 import { Product } from './product.schema';
 
 export type UserDocument = HydratedDocument<User>;
@@ -19,10 +19,10 @@ export class User {
   @Prop({ required: false })
   userAddress: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Order' })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }] })
   userOrders: Order[];
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Product' })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }] })
   userCartProducts: Product[];
 
   @Prop({ default: Date.now })

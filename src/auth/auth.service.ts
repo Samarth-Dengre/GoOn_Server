@@ -83,7 +83,7 @@ export class AuthService {
       random,
     };
     const token = await this.jwt.sign(payload, {
-      expiresIn: '1d',
+      expiresIn: '15d',
       secret: this.config.get('JWT_SECRET'),
     });
     return token;

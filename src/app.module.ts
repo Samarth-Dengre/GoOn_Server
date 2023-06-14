@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ProductsModule } from './products/products.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -18,6 +20,10 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forRoot(
       'mongodb+srv://dengresamarth113:UzCYILEOOIbBlxUA@cluster0.16ixmkw.mongodb.net/GoOn',
     ),
+    ProductsModule,
+    OrdersModule,
   ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

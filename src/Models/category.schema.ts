@@ -6,16 +6,13 @@ export type CategoryDocument = HydratedDocument<Category>;
 
 @Schema()
 export class Category {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
+  categoryId: number;
+
+  @Prop({ required: true, unique: true })
   categoryName: string;
 
-  @Prop({ required: true })
-  categoryDescription: string;
-
-  @Prop({ required: true })
-  categoryImage: string;
-
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Store' })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Store' }] })
   categoryStore: Store[];
 
   @Prop({ default: Date.now })
