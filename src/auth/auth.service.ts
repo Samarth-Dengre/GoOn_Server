@@ -1,0 +1,93 @@
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
+import * as argon from 'argon2';
+import { Login_Dto, Signup_Dto } from './dto';
+import { Response } from 'express';
+import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
+
+@Injectable()
+export class AuthService {
+  constructor(
+    private prisma: PrismaService,
+    private jwt: JwtService,
+    private config: ConfigService,
+  ) {}
+
+  // This method handles the signup logic
+  async signup(
+    { email, password, userName, confirmPassword }: Signup_Dto,
+    res: Response,
+  ) {
+    try {
+      if (password !== confirmPassword) {
+        return res
+          .status(400)
+          .json({ message: ['Password and confirm password do not match'] });
+      }
+      const hashedPassword = await argon.hash(password);
+      const user = await this.prisma.user.create({
+        data: {
+          email,
+          password: hashedPassword,
+          userName,
+        },
+      });
+      return res.status(201).json({
+        message: ['Signed up successfully'],
+      });
+    } catch (err) {
+      console.log('err in auth.service.ts signup()', err);
+      if (err.code === 'P2002') {
+        return res.status(400).json({ message: ['Email already exists'] });
+      }
+      return res.status(500).json({ message: ['Something went wrong'] });
+    }
+  }
+
+  // This method handles the login logic
+  async login({ email, password }: Login_Dto, res: Response) {
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: {
+          email,
+        },
+      });
+      if (!user) {
+        return res.status(400).json({ message: ['Invalid credentials'] });
+      }
+      const isPasswordValid = await argon.verify(user.password, password);
+      if (!isPasswordValid) {
+        return res.status(400).json({ message: ['Invalid credentials'] });
+      }
+      user.password = undefined;
+      const token = await this.createToken(user.id, user.email, Math.random());
+      return res.status(200).json({
+        message: ['Logged in successfully'],
+        user,
+        token,
+      });
+    } catch (err) {
+      console.log('err in auth.service.ts login()', err);
+      return res.status(500).json({ message: ['Something went wrong'] });
+    }
+  }
+
+  // This function creates a JWT token
+  async createToken(
+    userId: string,
+    email: string,
+    random: number,
+  ): Promise<string> {
+    const payload = {
+      sub: userId,
+      email,
+      random,
+    };
+    const token = await this.jwt.sign(payload, {
+      expiresIn: '1d',
+      secret: this.config.get('JWT_SECRET'),
+    });
+    return token;
+  }
+}
