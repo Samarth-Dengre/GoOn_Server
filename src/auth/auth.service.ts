@@ -1,17 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
 import * as argon from 'argon2';
 import { Login_Dto, Signup_Dto } from './dto';
 import { Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { User } from 'src/Models/user.schema';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private prisma: PrismaService,
     private jwt: JwtService,
     private config: ConfigService,
+    @InjectModel(User.name) private userModel: Model<User>,
   ) {}
 
   // This method handles the signup logic
@@ -26,12 +28,10 @@ export class AuthService {
           .json({ message: ['Password and confirm password do not match'] });
       }
       const hashedPassword = await argon.hash(password);
-      const user = await this.prisma.user.create({
-        data: {
-          email,
-          password: hashedPassword,
-          userName,
-        },
+      const user = await this.userModel.create({
+        email,
+        password: hashedPassword,
+        userName,
       });
       return res.status(201).json({
         message: ['Signed up successfully'],
@@ -48,11 +48,7 @@ export class AuthService {
   // This method handles the login logic
   async login({ email, password }: Login_Dto, res: Response) {
     try {
-      const user = await this.prisma.user.findUnique({
-        where: {
-          email,
-        },
-      });
+      const user = await this.userModel.findOne({ email });
       if (!user) {
         return res.status(400).json({ message: ['Invalid credentials'] });
       }
@@ -61,6 +57,8 @@ export class AuthService {
         return res.status(400).json({ message: ['Invalid credentials'] });
       }
       user.password = undefined;
+      user.createdAt = undefined;
+      user.updatedAt = undefined;
       const token = await this.createToken(user.id, user.email, Math.random());
       return res.status(200).json({
         message: ['Logged in successfully'],
