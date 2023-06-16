@@ -22,12 +22,8 @@ export class ProductsService {
         productDescription: product.productDescription,
         productPrice: product.productPrice,
         productImage: product.productImage,
-        productStore: product.productStore,
       });
-
-      const store = await this.storeModel.findById(product.productStore);
-      store.storeProducts.push(createdProduct);
-      await store.save();
+      await createdProduct.save();
     }
     return 'seeded';
   }

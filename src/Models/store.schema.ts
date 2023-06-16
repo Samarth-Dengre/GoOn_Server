@@ -11,6 +11,9 @@ export class Store {
   storeName: string;
 
   @Prop({ required: true })
+  storeImage: string;
+
+  @Prop({ required: true })
   storeAddress: string;
 
   @Prop({ required: true })
@@ -19,13 +22,16 @@ export class Store {
   @Prop({ required: true })
   storeEmail: string;
 
+  @Prop({ required: true })
+  storeDescription: string[];
+
   @Prop({ required: true, default: false })
   isVerified: boolean;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }] })
   storeCategory: Category[];
 
-  @Prop({ tyep: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }] })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }] })
   storeProducts: Product[];
 
   @Prop({ default: Date.now })

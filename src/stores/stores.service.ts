@@ -4,13 +4,25 @@ import { Model } from 'mongoose';
 import { Store } from 'src/Models/store.schema';
 import { Category } from 'src/Models/category.schema';
 import { stores } from 'seeds/stores';
+import { Product } from 'src/Models/product.schema';
 
 @Injectable()
 export class StoresService {
   constructor(
     @InjectModel('Store') private readonly storeModel: Model<Store>,
     @InjectModel('Category') private readonly categoryModel: Model<Category>,
+    @InjectModel('Product') private readonly productModel: Model<Product>,
   ) {}
+
+  //  This function is used to get all the stores.
+  async getAllStores() {
+    return await this.storeModel
+      .find()
+      .populate('storeCategory', 'categoryName')
+      .select(
+        'storeName storeAddress storeContact storeEmail isVerified storeCategory storeImage',
+      );
+  }
 
   //   This function is used to seed the database with the stores data.
   async seedStores() {
@@ -23,7 +35,10 @@ export class StoresService {
         storeContact: store.storeContact,
         storeEmail: store.storeEmail,
         isVerified: store.isVerified,
-        storeProducts: store.storeProducts,
+        storeDescription: store.storeDescription,
+        storeImage: store.storeImage,
+        storeCategory: [],
+        storeProducts: [],
       });
 
       for (let j = 0; j < store.storeCategory.length; j++) {
@@ -31,8 +46,18 @@ export class StoresService {
           categoryId: store.storeCategory[j],
         });
         createdStore.storeCategory.push(category);
-        await createdStore.save();
+        category.categoryStore.push(createdStore);
+        await category.save();
       }
+      for (let j = 0; j < store.storeProducts.length; j++) {
+        const pro = await this.productModel.findOne({
+          _id: store.storeProducts[j],
+        });
+        createdStore.storeProducts.push(pro);
+        pro.productStore = createdStore;
+        await pro.save();
+      }
+      await createdStore.save();
     }
     return 'seeded';
   }
