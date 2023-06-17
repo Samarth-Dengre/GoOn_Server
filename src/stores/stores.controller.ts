@@ -1,11 +1,17 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Res } from '@nestjs/common';
 import { StoresService } from './stores.service';
-import { AuthGuard } from '@nestjs/passport';
-
+import { Response } from 'express';
 @Controller('stores')
 export class StoresController {
   constructor(private readonly storesService: StoresService) {}
 
+  // This function is used to get a store by its id.
+  @Get(':id')
+  async getStoreById(@Param('id') id: string, @Res() res: Response) {
+    return this.storesService.getStoreById(id, res);
+  }
+
+  // This function is used to get all the stores.
   @Get()
   async getAllStores() {
     return this.storesService.getAllStores();

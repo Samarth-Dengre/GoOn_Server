@@ -5,6 +5,7 @@ import { Store } from 'src/Models/store.schema';
 import { Category } from 'src/Models/category.schema';
 import { stores } from 'seeds/stores';
 import { Product } from 'src/Models/product.schema';
+import { Response } from 'express';
 
 @Injectable()
 export class StoresService {
@@ -22,6 +23,29 @@ export class StoresService {
       .select(
         'storeName storeAddress storeContact storeEmail isVerified storeCategory storeImage',
       );
+  }
+
+  //  This function is used to get a store by its id.
+  async getStoreById(id: string, res: Response) {
+    try {
+      const store = await this.storeModel
+        .findById(id)
+        .populate('storeCategory', 'categoryName')
+        .populate(
+          'storeProducts',
+          'productName productPrice productImage productDescription productCategory',
+        );
+
+      if (store) {
+        return res.status(200).json({
+          message: ['Store fetched successfully!'],
+          store: store,
+        });
+      }
+    } catch (err) {
+      console.log('err in stores.service.ts getStoreById()', err);
+      return res.status(500).json({ message: ['Something went wrong'] });
+    }
   }
 
   //   This function is used to seed the database with the stores data.
