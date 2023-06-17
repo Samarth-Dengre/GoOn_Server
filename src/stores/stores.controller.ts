@@ -16,10 +16,4 @@ export class StoresController {
   async getAllStores() {
     return this.storesService.getAllStores();
   }
-
-  //   This function is used to seed the database with the stores data.
-  @Get('seed')
-  async seedStores() {
-    return this.storesService.seedStores();
-  }
 }

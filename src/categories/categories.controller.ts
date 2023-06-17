@@ -14,10 +14,4 @@ export class CategoriesController {
   ) {
     return this.categoriesService.getStoresByCategory(category, res);
   }
-
-  //   This function is used to seed the database with the categories data.
-  @Get('seed')
-  async seedCategories() {
-    return this.categoriesService.seedCategories();
-  }
 }

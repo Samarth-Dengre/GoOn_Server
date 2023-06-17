@@ -34,6 +34,15 @@ export class Store {
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }] })
   storeProducts: Product[];
 
+  @Prop({
+    type: { rating: Number, numReviews: Number },
+    default: { rating: 0, numReviews: 0 },
+  })
+  storerating: {
+    rating: number;
+    numReviews: number;
+  };
+
   @Prop({ default: Date.now })
   createdAt: Date;
 
