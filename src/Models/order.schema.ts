@@ -17,7 +17,7 @@ export class Order {
   orderUser: User;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }] })
-  orderProducts: Product[];
+  orderProducts: Product[] & { quantity: number }[];
 
   @Prop({ required: true })
   modeOfPayment: string;

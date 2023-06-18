@@ -28,7 +28,7 @@ export class StoresService {
         .populate('storeCategory', 'categoryName')
         .populate(
           'storeProducts',
-          'productName productPrice productImage productrating',
+          'productName productPrice productImage productrating productStore',
         );
 
       if (store) {
