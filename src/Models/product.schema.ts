@@ -13,13 +13,16 @@ export class Product {
   productDescription: string[];
 
   @Prop({ required: true })
-  productPrice: string;
+  productPrice: number;
+
+  @Prop({ required: true })
+  productMRP: number;
 
   @Prop({ required: true })
   productImage: string[];
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Store' })
-  productStore: Store;
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Store' }] })
+  productStore: Store[];
 
   @Prop({
     type: { rating: Number, numReviews: Number },

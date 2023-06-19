@@ -29,6 +29,7 @@ export class SeedService {
         productPrice: product.productPrice,
         productImage: product.productImage,
         productrating: product.productrating,
+        productMRP: product.productMRP,
       });
       await createdProduct.save();
     }
@@ -70,7 +71,7 @@ export class SeedService {
         const productFound = await this.productModel.findOne({
           _id: allProducts[product]._id,
         });
-        productFound.productStore = createdStore;
+        productFound.productStore.push(createdStore);
         await productFound.save();
       }
       await createdStore.save();

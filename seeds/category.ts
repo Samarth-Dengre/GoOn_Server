@@ -25,11 +25,6 @@ export const categories = [
     categoryStore: [],
   },
   {
-    categoryId: 6,
-    categoryName: 'Sanitary',
-    categoryStore: [],
-  },
-  {
     categoryId: 7,
     categoryName: 'Beauty',
     categoryStore: [],
@@ -37,6 +32,11 @@ export const categories = [
   {
     categoryId: 8,
     categoryName: 'Home and Kitchen',
+    categoryStore: [],
+  },
+  {
+    categoryId: 9,
+    categoryName: 'Footwear',
     categoryStore: [],
   },
 ];

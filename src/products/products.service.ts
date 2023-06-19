@@ -20,6 +20,7 @@ export class ProductsService {
       product.__v = undefined;
       product.createdAt = undefined;
       product.updatedAt = undefined;
+      product.productStore = undefined;
       return res.status(200).json(product);
     } catch (err) {
       return res.status(500).json({ msg: ['Server error'] });
