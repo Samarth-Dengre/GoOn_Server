@@ -7,6 +7,9 @@ export const stores = [
     isVerified: true,
     storeCategory: [5],
     storeProducts: [0, 1, 2, 3, 4, 5, 6, 7],
+    storeProductsPrice: [
+      1349.99, 2099.99, 599.0, 229.99, 1099.99, 359.99, 179.99, 299.99,
+    ],
     storeImage:
       'https://img.freepik.com/free-photo/seller-man-mobile-phone-professional-consultant-tech-store-shop-check-new-smart-watches_627829-4979.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -29,6 +32,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [5],
     storeProducts: [0, 4, 7],
+    storeProductsPrice: [1399.99, 1049.99, 289.99],
     storeImage:
       'https://img.freepik.com/free-photo/indian-man-customer-buyer-mobile-phone-store-making-selfie-by-smartphone-monopod-stick-south-asian-peoples-technologies-concept-cellphone-shop_627829-1275.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -49,6 +53,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [2],
     storeProducts: [8, 9, 10],
+    storeProductsPrice: [24.99, 17.99, 35.99],
     storeImage:
       'https://img.freepik.com/free-photo/beautiful-second-hand-market_23-2149353670.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -68,6 +73,7 @@ export const stores = [
     isVerified: true,
     storeCategory: [2],
     storeProducts: [8, 9, 10],
+    storeProductsPrice: [27.99, 15.99, 33.99],
     storeImage:
       'https://img.freepik.com/free-photo/young-handsome-man-choosing-clothes-shop_1303-19720.jpg?w=900&t=st=1687178740~exp=1687179340~hmac=75f5c0749a815dceae1270d2a9058d783b21c0b2a8afa6dba6942f6b2d5ccc41',
     storeDescription: [
@@ -86,6 +92,7 @@ export const stores = [
     isVerified: true,
     storeCategory: [9],
     storeProducts: [11, 12, 13],
+    storeProductsPrice: [109.99, 69.99, 79.99],
     storeImage:
       'https://img.freepik.com/free-photo/manager-preparing-store-reopening_23-2149142194.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -104,6 +111,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [8],
     storeProducts: [14, 15],
+    storeProductsPrice: [69.99, 49.0],
     storeImage:
       'https://img.freepik.com/free-photo/shop-assistant-hypermarket-shows-new-model-gas-stove-young-couple-all-wearing-medical-masks_93675-134482.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -123,6 +131,7 @@ export const stores = [
     isVerified: true,
     storeCategory: [1],
     storeProducts: [16, 17, 18],
+    storeProductsPrice: [229.99, 209.99, 429.99],
     storeImage:
       'https://img.freepik.com/free-photo/male-shop-assistant-helps-young-couple-choose-new-home-appliance_93675-133540.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -141,6 +150,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [1],
     storeProducts: [17, 18, 19],
+    storeProductsPrice: [209.99, 400.99, 119.99],
     storeImage:
       'https://img.freepik.com/free-vector/gradient-mobile-store-logo-design_23-2149699536.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -159,6 +169,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [4],
     storeProducts: [20, 21, 22],
+    storeProductsPrice: [329.99, 129.99, 100.99],
     storeImage:
       'https://img.freepik.com/free-photo/modern-interior-lobby-with-uncommon-furniture_1262-3576.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -177,6 +188,7 @@ export const stores = [
     isVerified: true,
     storeCategory: [4],
     storeProducts: [21, 22, 23],
+    storeProductsPrice: [125.99, 119.99, 105.99],
     storeImage:
       'https://img.freepik.com/free-photo/modern-interior-design-office_181624-21578.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -196,6 +208,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [3],
     storeProducts: [24, 25, 26, 27, 28],
+    storeProductsPrice: [0.89, 1.49, 0.69, 0.45, 3.69],
     storeImage:
       'https://img.freepik.com/free-photo/cheery-little-girl-sitting-shopping-cart_171337-2374.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -214,6 +227,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [3],
     storeProducts: [25, 26, 27, 28],
+    storeProductsPrice: [1.49, 0.69, 0.45, 3.69],
     storeImage:
       'https://img.freepik.com/free-vector/cashier-shoppers-supermarket-woman-employee-working-cash-desk-buyer-with-shopping-cart-purchases-store_575670-99.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -233,6 +247,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [7],
     storeProducts: [29, 30, 31, 32],
+    storeProductsPrice: [3.39, 3.39, 3.29, 3.19],
     storeImage:
       'https://img.freepik.com/free-vector/makeup-cosmetics-accessories-shelf-realistic-image_1284-9312.jpg?size=626&ext=jpg',
     storeDescription: [
@@ -251,6 +266,7 @@ export const stores = [
     isVerified: false,
     storeCategory: [7],
     storeProducts: [30, 31, 32],
+    storeProductsPrice: [3.39, 3.29, 3.19],
     storeImage:
       'https://img.freepik.com/free-vector/empty-cosmetics-store-beauty-shop-interior-with-no-people-products-showcase-face-lips-hair-perfumes-eyes-section_575670-432.jpg?size=626&ext=jpg',
     storeDescription: [

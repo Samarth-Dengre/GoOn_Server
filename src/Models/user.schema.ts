@@ -25,11 +25,13 @@ export class User {
   })
   userOrders: Order[];
 
-  @Prop({
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
-    default: [],
-  })
-  userCartProducts: Product[] & { quantity: number }[];
+  @Prop([
+    {
+      product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+      quantity: { type: Number, required: true },
+    },
+  ])
+  userCartProducts: { product: Product; quantity: number }[];
 
   @Prop({ default: Date.now })
   createdAt: Date;

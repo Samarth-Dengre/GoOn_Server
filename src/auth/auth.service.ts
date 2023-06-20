@@ -60,11 +60,18 @@ export class AuthService {
       user.createdAt = undefined;
       user.updatedAt = undefined;
       user.userOrders = undefined;
+      // sum of all the quantities of all the products in the cart
+      const cartSize = user.userCartProducts.reduce(
+        (acc, curr) => acc + curr.quantity,
+        0,
+      );
+      user.userCartProducts = undefined;
       const token = await this.createToken(user.id, user.email, Math.random());
       return res.status(200).json({
         message: ['Logged in successfully'],
         user,
         token,
+        cartSize,
       });
     } catch (err) {
       console.log('err in auth.service.ts login()', err);

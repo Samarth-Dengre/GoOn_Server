@@ -13,9 +13,6 @@ export class Product {
   productDescription: string[];
 
   @Prop({ required: true })
-  productPrice: number;
-
-  @Prop({ required: true })
   productMRP: number;
 
   @Prop({ required: true })

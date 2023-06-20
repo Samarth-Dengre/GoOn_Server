@@ -31,8 +31,13 @@ export class Store {
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }] })
   storeCategory: Category[];
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }] })
-  storeProducts: Product[];
+  @Prop([
+    {
+      product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+      price: { type: Number, required: true },
+    },
+  ])
+  storeProducts: { product: Product; price: number }[];
 
   @Prop({
     type: { rating: Number, numReviews: Number },

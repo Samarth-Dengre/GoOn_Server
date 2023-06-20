@@ -12,7 +12,6 @@ export const products = [
       'Supports MagSafe accessories for easy attach and faster wireless charging',
       'iOS with redesigned widgets on the Home screen, all-new App Library, App Clips and more',
     ],
-    productPrice: 1399.99,
     productMRP: 1599.99,
     productImage: [
       'https://img.freepik.com/free-vector/realistic-smartphone-device_52683-29765.jpg?size=626&ext=jpg',
@@ -39,7 +38,6 @@ export const products = [
       '802.11ac Wi-Fi',
       'Force Touch trackpad',
     ],
-    productPrice: 1999.99,
     productMRP: 2199.99,
     productImage: [
       'https://img.freepik.com/free-photo/electronic-device-balancing-concept_23-2150422322.jpg?size=626&ext=jpg',
@@ -65,7 +63,6 @@ export const products = [
       'Swimproof design',
       'Sync your favourite music, podcasts and audiobooks',
     ],
-    productPrice: 599.99,
     productMRP: 699.99,
     productImage: [
       'https://img.freepik.com/free-psd/smartwatch-mock-up-design_1135-61.jpg?size=626&ext=jpg',
@@ -88,7 +85,6 @@ export const products = [
       'Easy setup for all your Apple devices',
       'The Wireless Charging Case delivers more than 24 hours of battery life',
     ],
-    productPrice: 199.99,
     productMRP: 249.99,
     productImage: [
       'https://img.freepik.com/free-photo/earphones-with-case-surrounded-by-nature-scene_23-2150165594.jpg?size=626&ext=jpg',
@@ -112,7 +108,6 @@ export const products = [
       '5000mAh battery',
       'Android 11',
     ],
-    productPrice: 1199.99,
     productMRP: 1299.99,
     productImage: [
       'https://img.freepik.com/free-vector/realistic-phones-different-views_52683-28436.jpg?size=626&ext=jpg',
@@ -135,7 +130,6 @@ export const products = [
       '247mAh battery',
       'Wear OS',
     ],
-    productPrice: 399.99,
     productMRP: 449.99,
     productImage: [
       'https://img.freepik.com/free-photo/smartwatch-screen-digital-device_53876-97295.jpg?size=626&ext=jpg',
@@ -158,7 +152,6 @@ export const products = [
       'Easy setup for all your devices',
       'The Wireless Charging Case delivers more than 24 hours of battery life',
     ],
-    productPrice: 100.99,
     productMRP: 189.99,
     productImage: [
       'https://img.freepik.com/free-photo/black-wireless-earbud-with-charging-case_1268-14371.jpg?size=626&ext=jpg',
@@ -181,7 +174,6 @@ export const products = [
       '4000mAh battery',
       'Android 10',
     ],
-    productPrice: 299.99,
     productMRP: 349.99,
     productImage: [
       'https://img.freepik.com/free-photo/three-isolated-smartphone-blue-background_125540-788.jpg?size=626&ext=jpg',
@@ -202,7 +194,6 @@ export const products = [
       'Button down collar',
       'Machine wash',
     ],
-    productPrice: 19.99,
     productMRP: 29.99,
     productImage: [
       'https://img.freepik.com/free-photo/smiling-man-wearing-sunglasses_171337-14990.jpg?size=626&ext=jpg',
@@ -223,7 +214,6 @@ export const products = [
       'Round neck',
       'Machine wash',
     ],
-    productPrice: 9.99,
     productMRP: 19.99,
     productImage: [
       'https://img.freepik.com/free-photo/blank-black-t-shirt-hanger-isolated-white-space_74952-876.jpg?size=626&ext=jpg',
@@ -243,7 +233,6 @@ export const products = [
       'Button down',
       'Machine wash',
     ],
-    productPrice: 29.99,
     productMRP: 39.99,
     productImage: [
       'https://img.freepik.com/free-photo/jeans_1203-8094.jpg?size=626&ext=jpg',
@@ -266,7 +255,6 @@ export const products = [
       'A midfoot band adapts to the size of your foot, keeping you comfortable and secure with every step',
       'The higher heel with foam on the sides creates a cupping sensation and adds stability',
     ],
-    productPrice: 99.99,
     productMRP: 129.99,
     productImage: [
       'https://img.freepik.com/free-photo/sport-shoes-running_1203-7549.jpg?size=626&ext=jpg',
@@ -289,7 +277,6 @@ export const products = [
       'Leather upper',
       'Rubber outsole',
     ],
-    productPrice: 79.99,
     productMRP: 99.99,
     productImage: [
       'https://img.freepik.com/free-photo/white-high-top-sneakers-unisex-footwear-fashion_53876-106036.jpg?size=626&ext=jpg',
@@ -314,7 +301,6 @@ export const products = [
       'Textile upper',
       'Rubber outsole',
     ],
-    productPrice: 69.99,
     productMRP: 89.99,
     productImage: [
       'https://img.freepik.com/free-photo/pair-trainers_144627-3800.jpg?size=626&ext=jpg',
@@ -335,8 +321,7 @@ export const products = [
       'Unique Mixing Action',
       'Assembled with Pride in Greenville, Ohio',
     ],
-    productPrice: 279.99,
-    productMRP: 349.99,
+    productMRP: 99.99,
     productImage: [
       'https://img.freepik.com/free-photo/woman-enjoying-her-juice-recipe_23-2149257488.jpg?size=626&ext=jpg',
       'https://img.freepik.com/free-photo/fitness-woman-preparing-detox-juice_23-2148207459.jpg?size=626&ext=jpg',
@@ -357,8 +342,7 @@ export const products = [
       '60-minute timer with auto shutoff',
       'Includes: oven rack, baking pan, air fryer rack/basket',
     ],
-    productPrice: 199.99,
-    productMRP: 249.99,
+    productMRP: 49.99,
     productImage: [
       'https://img.freepik.com/free-photo/mother-with-daughter-kitchen_1157-18657.jpg?size=626&ext=jpg',
       'https://img.freepik.com/free-photo/happy-black-family-checking-toast_23-2148947197.jpg?size=626&ext=jpg',
@@ -380,7 +364,6 @@ export const products = [
       'Shelf Type: Toughened Glass',
       'Also included in the box: User manual, Warranty card',
     ],
-    productPrice: 199.99,
     productMRP: 249.99,
     productImage: [
       'https://img.freepik.com/free-vector/refrigerator-with-closed-opened-door_1308-95206.jpg?size=626&ext=jpg',
@@ -405,7 +388,6 @@ export const products = [
       'Dimensions - 540 x 560 x 906 mm',
       'Powerful filtration and easy cleaning',
     ],
-    productPrice: 199.99,
     productMRP: 249.99,
     productImage: [
       'https://img.freepik.com/free-vector/washing-machine-with-front-door_1308-74400.jpg?size=626&ext=jpg',
@@ -426,7 +408,6 @@ export const products = [
       'Shelf Type: Toughened Glass',
       'Also included in the box: User manual, Warranty card',
     ],
-    productPrice: 399.99,
     productMRP: 449.99,
     productImage: [
       'https://img.freepik.com/free-vector/refrigerator-closed-opened-door-with-lots-food_1308-103210.jpg?size=626&ext=jpg',
@@ -448,7 +429,6 @@ export const products = [
       'Warranty: 5 years on inner container, 2 years comprehensive',
       'Included in the box: 1 Vertical Storage Water Heater, User Manual, Mounting Screws',
     ],
-    productPrice: 129.99,
     productMRP: 149.99,
     productImage: [
       'https://img.freepik.com/free-vector/colored-realistic-electric-water-heater-boiler-illustration-with-big-white-headline-light-blue-wall_1284-33272.jpg?size=626&ext=jpg',
@@ -470,7 +450,6 @@ export const products = [
       'Assembly Required: The product requires carpenter assembly and will be provided by the seller',
       'Warranty: 1 year on product',
     ],
-    productPrice: 149.99,
     productMRP: 349.99,
     productImage: [
       'https://img.freepik.com/free-psd/wall-mockup-psd-with-blue-sofa-living-room_53876-144931.jpg?size=626&ext=jpg',
@@ -490,7 +469,6 @@ export const products = [
       'Seating Capacity: 6 seat',
       'Warranty: 6 months on product',
     ],
-    productPrice: 99.99,
     productMRP: 139.99,
     productImage: [
       'https://img.freepik.com/free-vector/top-view-empty-restaurant-table-with-realistic-design_23-2147914129.jpg?size=626&ext=jpg',
@@ -510,7 +488,6 @@ export const products = [
       'Color: Brown & White, Style: Modern',
       'Warranty: 6 months on product',
     ],
-    productPrice: 89.99,
     productMRP: 109.99,
     productImage: [
       'https://img.freepik.com/free-photo/3d-rendering-beautiful-comtemporary-luxury-bedroom-suite-hotel-with-tv_105762-2064.jpg?size=626&ext=jpg',
@@ -531,7 +508,6 @@ export const products = [
       'Warranty: 9 months on product',
       'Assembly Required: The product requires carpenter assembly and will be provided by the seller',
     ],
-    productPrice: 117.99,
     productMRP: 120.99,
     productImage: [
       'https://img.freepik.com/free-vector/vector-brown-cloakroom-closet-with-shelves-full-boxes-clothes-shirts-boots-shoes-hats-front-view_1284-48002.jpg?size=626&ext=jpg',
@@ -553,7 +529,6 @@ export const products = [
       'No Additives',
       'No Bleaching',
     ],
-    productPrice: 0.99,
     productMRP: 1.0,
     productImage: [
       'https://img.freepik.com/free-photo/ingredient-bags-full-flour_23-2149482551.jpg?size=626&ext=jpg',
@@ -574,7 +549,6 @@ export const products = [
       'No Additives',
       'No Bleaching',
     ],
-    productPrice: 1.99,
     productMRP: 2.0,
     productImage: [
       'https://img.freepik.com/free-photo/top-view-raw-rice-inside-plate-dark-desk_179666-27235.jpg?size=626&ext=jpg',
@@ -594,7 +568,6 @@ export const products = [
       'No Additives',
       'No Bleaching',
     ],
-    productPrice: 0.49,
     productMRP: 0.79,
     productImage: [
       'https://img.freepik.com/free-photo/world-diabetes-day-sugar-wooden-bowl-dark-surface_1150-26666.jpg?size=626&ext=jpg',
@@ -614,7 +587,6 @@ export const products = [
       'No Additives',
       'No Bleaching',
     ],
-    productPrice: 0.29,
     productMRP: 0.49,
     productImage: [
       'https://img.freepik.com/free-vector/glass-salt-shaker-pile-salt_1441-4176.jpg?size=626&ext=jpg',
@@ -634,7 +606,6 @@ export const products = [
       'No Additives',
       'No Bleaching',
     ],
-    productPrice: 2.99,
     productMRP: 3.99,
     productImage: [
       'https://img.freepik.com/free-vector/matcha-green-tea-powder-vector-realistic-product-placement-mock-up-healthy-drink-label-designs_1268-18117.jpg?size=626&ext=jpg',
@@ -654,7 +625,6 @@ export const products = [
       'Dermatologically Tested',
       'Deep Moisturizing',
     ],
-    productPrice: 2.99,
     productMRP: 3.49,
     productImage: [
       'https://img.freepik.com/free-photo/top-view-lipstick-with-brush_23-2149096695.jpg?size=626&ext=jpg',
@@ -674,7 +644,6 @@ export const products = [
       'Deep Moisturizing',
       'No Parabens and Sulphates',
     ],
-    productPrice: 3.39,
     productMRP: 3.49,
     productImage: [
       'https://img.freepik.com/free-vector/skin-treatment-cosmetic_23-2147697213.jpg?size=626&ext=jpg',
@@ -695,7 +664,6 @@ export const products = [
       'No Parabens and Sulphates',
       'No Bleaching',
     ],
-    productPrice: 2.99,
     productMRP: 3.49,
     productImage: [
       'https://img.freepik.com/free-psd/cosmetic-packaging-mock-up_1307-657.jpg?size=626&ext=jpg',
@@ -716,7 +684,6 @@ export const products = [
       'No Parabens and Sulphates',
       'Anti-Dandruff',
     ],
-    productPrice: 2.99,
     productMRP: 3.49,
     productImage: [
       'https://img.freepik.com/free-vector/realistic-banner-aloe-vera-products_23-2147640895.jpg?size=626&ext=jpg',

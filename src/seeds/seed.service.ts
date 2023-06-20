@@ -26,7 +26,6 @@ export class SeedService {
       const createdProduct = await this.productModel.create({
         productName: product.productName,
         productDescription: product.productDescription,
-        productPrice: product.productPrice,
         productImage: product.productImage,
         productrating: product.productrating,
         productMRP: product.productMRP,
@@ -67,7 +66,10 @@ export class SeedService {
       const allProducts = await this.productModel.find({});
       for (let j = 0; j < store.storeProducts.length; j++) {
         const product = store.storeProducts[j];
-        createdStore.storeProducts.push(allProducts[product]);
+        createdStore.storeProducts.push({
+          product: allProducts[product],
+          price: store.storeProductsPrice[j],
+        });
         const productFound = await this.productModel.findOne({
           _id: allProducts[product]._id,
         });

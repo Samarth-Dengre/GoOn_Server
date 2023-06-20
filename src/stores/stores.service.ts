@@ -26,10 +26,11 @@ export class StoresService {
       const store = await this.storeModel
         .findById(id)
         .populate('storeCategory', 'categoryName')
-        .populate(
-          'storeProducts',
-          'productName productPrice productImage productrating productStore',
-        );
+        .populate({
+          path: 'storeProducts.product',
+          select: 'productName productImage productrating productMRP',
+          model: 'Product',
+        });
 
       if (store) {
         return res.status(200).json({

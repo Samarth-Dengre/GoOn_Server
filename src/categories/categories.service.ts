@@ -17,7 +17,7 @@ export class CategoriesService {
         })
         .populate(
           'categoryStore',
-          'storeName storeAddress storeContact storeEmail isVerified storeImage',
+          'storeName storeAddress storeContact storeEmail isVerified storeImage storerating',
         );
       return res.status(200).json({
         categoryStores: categoryObj.categoryStore,
