@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { Order } from './order.schema';
 import { Product } from './product.schema';
+import { Store } from './store.schema';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -28,10 +29,19 @@ export class User {
   @Prop([
     {
       product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-      quantity: { type: Number, required: true },
+      seller: [
+        {
+          id: { type: mongoose.Schema.Types.ObjectId, ref: 'Store' },
+          quantity: { type: Number, required: true },
+          price: { type: Number, required: true },
+        },
+      ],
     },
   ])
-  userCartProducts: { product: Product; quantity: number }[];
+  userCartProducts: {
+    product: Product;
+    seller: { id: Store; quantity: number; price: number }[];
+  }[];
 
   @Prop({ default: Date.now })
   createdAt: Date;
