@@ -41,46 +41,33 @@ export class UserService {
         });
       }
 
+      // fetch the price of the product from the seller
       const price = seller.storeProducts.find(
         (item) => item.product.toString() === dto.product.toString(),
       ).price;
 
       const cartItems = userObj.userCartProducts;
+
+      // check if the product is already in the cart or not
       const index = cartItems.findIndex(
-        (item) => item.product.toString() === dto.product.toString(),
+        (item) =>
+          item.product.toString() === dto.product.toString() &&
+          item.seller.toString() === dto.seller.toString(),
       );
+
+      // if the product is not in the cart, add it to the cart
       if (index === -1) {
         cartItems.push({
           product: productObj,
-          seller: [{ id: seller, quantity: dto.quantity, price: price }],
-        });
-      } else {
-        const sellerIndex = cartItems[index].seller.findIndex(
-          (item) => item.id.toString() === dto.seller.toString(),
-        );
-        if (sellerIndex === -1) {
-          cartItems[index].seller.push({
+          seller: {
             id: seller,
             quantity: dto.quantity,
-            price,
-          });
-        } else {
-          if (
-            cartItems[index].seller[sellerIndex].quantity + dto.quantity <
-            0
-          ) {
-            return res.status(400).json({
-              message: ['Invalid quantity'],
-            });
-          }
-          cartItems[index].seller[sellerIndex].quantity += dto.quantity;
-          if (cartItems[index].seller[sellerIndex].quantity === 0) {
-            cartItems[index].seller.splice(sellerIndex, 1);
-          }
-        }
-        if (cartItems[index].seller.length === 0) {
-          cartItems.splice(index, 1);
-        }
+            price: price,
+            sellerName: seller.storeName,
+          },
+        });
+      } else {
+        cartItems[index].seller.quantity += dto.quantity;
       }
       userObj.userCartProducts = cartItems;
       await userObj.save();
@@ -96,16 +83,10 @@ export class UserService {
   // This method handles the cart retrieval logic for the user (get cart)
   async getCart(res: Response, user: any) {
     try {
-      const cartItems = await this.userModel
-        .findById(user._id)
-        .populate({
-          path: 'userCartProducts.product',
-          select: 'productName productImage productMRP',
-        })
-        .populate({
-          path: 'userCartProducts.seller.id',
-          select: 'storeName',
-        });
+      const cartItems = await this.userModel.findById(user._id).populate({
+        path: 'userCartProducts.product',
+        select: 'productName productImage productMRP',
+      });
 
       return res.status(200).json({
         message: ['Cart retrieved successfully!'],

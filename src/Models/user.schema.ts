@@ -29,18 +29,17 @@ export class User {
   @Prop([
     {
       product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-      seller: [
-        {
-          id: { type: mongoose.Schema.Types.ObjectId, ref: 'Store' },
-          quantity: { type: Number, required: true },
-          price: { type: Number, required: true },
-        },
-      ],
+      seller: {
+        id: { type: mongoose.Schema.Types.ObjectId, ref: 'Store' },
+        quantity: { type: Number, required: true },
+        price: { type: Number, required: true },
+        sellerName: { type: String, required: true },
+      },
     },
   ])
   userCartProducts: {
     product: Product;
-    seller: { id: Store; quantity: number; price: number }[];
+    seller: { id: Store; quantity: number; price: number; sellerName: string };
   }[];
 
   @Prop({ default: Date.now })

@@ -62,8 +62,7 @@ export class AuthService {
       user.userOrders = undefined;
       // sum of all the quantities of all the products in the cart
       const cartSize = user.userCartProducts.reduce(
-        (acc, item) =>
-          acc + item.seller.reduce((acc, item) => acc + item.quantity, 0),
+        (acc, item) => acc + item.seller.quantity,
         0,
       );
 
