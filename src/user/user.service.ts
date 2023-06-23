@@ -32,8 +32,8 @@ export class UserService {
         });
       }
       // check if the product is sold by the seller
-      const isSoldBySeller = productObj.productStore.some(
-        (item) => item.toString() === seller._id.toString(),
+      const isSoldBySeller = productObj.productStores.some(
+        (item) => item.store.toString() === seller._id.toString(),
       );
       if (!isSoldBySeller) {
         return res.status(400).json({

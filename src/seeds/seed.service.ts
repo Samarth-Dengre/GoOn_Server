@@ -73,7 +73,10 @@ export class SeedService {
         const productFound = await this.productModel.findOne({
           _id: allProducts[product]._id,
         });
-        productFound.productStore.push(createdStore);
+        productFound.productStores.push({
+          store: createdStore,
+          price: store.storeProductsPrice[j],
+        });
         await productFound.save();
       }
       await createdStore.save();

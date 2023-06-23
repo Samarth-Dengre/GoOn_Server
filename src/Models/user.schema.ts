@@ -42,6 +42,14 @@ export class User {
     seller: { id: Store; quantity: number; price: number; sellerName: string };
   }[];
 
+  @Prop([
+    {
+      product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+      rating: { type: Number, required: true },
+    },
+  ])
+  userRatings: { product: Product; rating: number }[];
+
   @Prop({ default: Date.now })
   createdAt: Date;
 

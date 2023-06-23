@@ -18,8 +18,13 @@ export class Product {
   @Prop({ required: true })
   productImage: string[];
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Store' }] })
-  productStore: Store[];
+  @Prop([
+    {
+      store: { type: mongoose.Schema.Types.ObjectId, ref: 'Store' },
+      price: { type: Number, required: true },
+    },
+  ])
+  productStores: { store: Store; price: number }[];
 
   @Prop({
     type: { rating: Number, numReviews: Number },
