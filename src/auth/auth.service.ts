@@ -67,6 +67,8 @@ export class AuthService {
       );
 
       user.userCartProducts = undefined;
+      user.userOrders = undefined;
+      user.userRatings = undefined;
       const token = await this.createToken(user.id, user.email, Math.random());
       return res.status(200).json({
         message: ['Logged in successfully'],
