@@ -41,6 +41,7 @@ export class Order {
       city: String,
       state: String,
       pincode: String,
+      landmark: String || null,
     },
     required: true,
   })
@@ -49,6 +50,7 @@ export class Order {
     city: string;
     state: string;
     pincode: string;
+    landmark: string | null;
   };
 
   @Prop({ default: Date.now })

@@ -1,29 +1,11 @@
 import { Type } from 'class-transformer';
 import {
-  IsArray,
   IsNotEmpty,
   IsString,
-  Min,
-  IsInt,
   ValidateNested,
-  IsNumber,
-  Validate,
+  IsIn,
+  IsOptional,
 } from 'class-validator';
-
-export class OrderItemsDto {
-  @IsString()
-  @IsNotEmpty()
-  product: string;
-
-  @IsString()
-  @IsNotEmpty()
-  store: string;
-
-  @IsNotEmpty({ message: 'Quantity cannot be empty' })
-  @IsInt()
-  @Min(1, { message: 'Quantity cannot be less than 1' })
-  quantity: number;
-}
 
 export class AddressDto {
   @IsString()
@@ -38,19 +20,19 @@ export class AddressDto {
   @IsNotEmpty()
   state: string;
 
+  @IsOptional()
+  @IsString()
+  landmark: string;
+
   @IsNotEmpty()
-  @IsNumber()
-  pincode: number;
+  @IsString()
+  pincode: string;
 }
 
 export class OrderDto {
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => OrderItemsDto)
-  orderItems: OrderItemsDto[];
-
   @IsString()
   @IsNotEmpty()
+  @IsIn(['COD', 'UPI', 'DEBITCARD', 'CREDITCARD'])
   modeOfPayment: string;
 
   @ValidateNested()

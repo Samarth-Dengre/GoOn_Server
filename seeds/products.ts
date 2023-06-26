@@ -186,7 +186,7 @@ export const products = [
   },
   // Now we are adding clothes products(index 8)
   {
-    productName: "Men's Regular Fit Shirt | Blue | 100% Cotton",
+    productName: "Men's Regular Fit Shirt | Blue | Pure Cotton",
     productDescription: [
       '100% Cotton',
       'Regular fit',
@@ -206,7 +206,7 @@ export const products = [
     },
   },
   {
-    productName: "Mens' Regulat Fit T-Shirt | Black | 100% Cotton",
+    productName: "Mens' Regulat Fit T-Shirt | Black | Pure Cotton",
     productDescription: [
       '100% Cotton',
       'Regular fit',
@@ -225,7 +225,7 @@ export const products = [
     },
   },
   {
-    productName: "Men's Denim Jeans | Blue | 100% Cotton",
+    productName: "Men's Denim Jeans | Blue | Pure Cotton",
     productDescription: [
       '100% Cotton',
       'Regular fit',

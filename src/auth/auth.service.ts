@@ -82,6 +82,35 @@ export class AuthService {
     }
   }
 
+  // This method handles the getUser logic which is used to get the user details from the JWT token
+  async getUser(user: any, res: Response) {
+    try {
+      const cartSize = user.userCartProducts.reduce(
+        (acc: number, item) => acc + item.seller.quantity,
+        0,
+      );
+      user.userCartProducts = undefined;
+      user.userOrders = undefined;
+      user.userRatings = undefined;
+      user.password = undefined;
+      user.createdAt = undefined;
+      user.updatedAt = undefined;
+      const token = await this.createToken(user.id, user.email, Math.random());
+      if (user) {
+        return res.status(200).json({
+          message: ['Logged in successfully'],
+          user,
+          cartSize,
+          token,
+        });
+      }
+      return res.status(401).json({ message: 'Session Timeout' });
+    } catch (err) {
+      console.log('err in auth.service.ts getUser()', err);
+      return res.status(500).json({ message: ['Something went wrong'] });
+    }
+  }
+
   // This function creates a JWT token
   async createToken(
     userId: string,

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class Cart_Item_Dto {
   @IsString()
@@ -6,7 +6,6 @@ export class Cart_Item_Dto {
   product: string;
 
   @IsNumber()
-  @IsPositive()
   quantity: number;
 
   @IsString()

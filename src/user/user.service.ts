@@ -18,14 +18,15 @@ export class UserService {
   // This method handles the cart management logic for the user (add/remove items from cart)
   async manageCart(dto: Cart_Item_Dto, res: Response, user: any) {
     try {
-      const userObj = await this.userModel.findById(user._id);
-      const productObj = await this.productModel.findById(dto.product);
+      const product = this.productModel.findById(dto.product);
+      const store = this.storeModel.findById(dto.seller);
+      const [productObj, seller] = await Promise.all([product, store]);
+
       if (!productObj) {
         return res.status(400).json({
           message: ['Product not found'],
         });
       }
-      const seller = await this.storeModel.findById(dto.seller);
       if (!seller) {
         return res.status(400).json({
           message: ['Seller not found'],
@@ -42,17 +43,17 @@ export class UserService {
       }
 
       // fetch the price of the product from the seller
-      const price = seller.storeProducts.find(
-        (item) => item.product.toString() === dto.product.toString(),
+      const price = productObj.productStores.find(
+        (item) => item.store.toString() === dto.seller.toString(),
       ).price;
 
-      const cartItems = userObj.userCartProducts;
+      const cartItems = user.userCartProducts;
 
       // check if the product is already in the cart or not
       const index = cartItems.findIndex(
         (item) =>
           item.product.toString() === dto.product.toString() &&
-          item.seller.toString() === dto.seller.toString(),
+          item.seller.id.toString() === dto.seller.toString(),
       );
 
       // if the product is not in the cart, add it to the cart
@@ -67,10 +68,18 @@ export class UserService {
           },
         });
       } else {
-        cartItems[index].seller.quantity += dto.quantity;
+        if (cartItems[index].seller.quantity + dto.quantity < 0) {
+          return res.status(400).json({
+            message: ['Invalid quantity'],
+          });
+        } else if (cartItems[index].seller.quantity + dto.quantity === 0) {
+          cartItems.splice(index, 1);
+        } else {
+          cartItems[index].seller.quantity += dto.quantity;
+        }
       }
-      userObj.userCartProducts = cartItems;
-      await userObj.save();
+      user.userCartProducts = cartItems;
+      await user.save();
       return res.status(200).json({
         message: ['Cart updated successfully!'],
       });
