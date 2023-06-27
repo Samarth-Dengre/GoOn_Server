@@ -28,7 +28,14 @@ export class StoresService {
         .populate('storeCategory', 'categoryName')
         .populate({
           path: 'storeProducts.product',
-          select: 'productName productImage productrating productMRP',
+          select: {
+            productName: 1,
+            productPrice: 1,
+            productImage: {
+              $arrayElemAt: ['$productImage', 0],
+            },
+            productRating: 1,
+          },
           model: 'Product',
         });
 

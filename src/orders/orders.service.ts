@@ -57,32 +57,28 @@ export class OrdersService {
     try {
       const orders = await this.orderModel
         .find({ orderUser: user })
+        .select({
+          _id: 1,
+          total: 1,
+          orderStatus: 1,
+          createdAt: 1,
+          modeOfPayment: 1,
+          orderItems: {
+            product: 1,
+          },
+        })
         .populate({
           path: 'orderItems',
           populate: {
             path: 'product',
             select: {
-              productName: 1,
+              productImage: {
+                $arrayElemAt: ['$productImage', 0],
+              },
             },
           },
-        })
-        .populate({
-          path: 'orderItems',
-          populate: {
-            path: 'store',
-            select: {
-              storeName: 1,
-            },
-          },
-        })
-        .select({
-          _id: 1,
-          total: 1,
-          orderStatus: 1,
-          orderItems: 1,
-          createdAt: 1,
         });
-      return res.status(200).json({ orders });
+      return res.status(200).json(orders);
     } catch (err) {
       console.log(err);
       return res.status(500).json({ msg: ['Server error'] });
@@ -100,7 +96,9 @@ export class OrdersService {
             path: 'product',
             select: {
               productName: 1,
-              productImage: 1,
+              productImage: {
+                $arrayElemAt: ['$productImage', 0],
+              },
               productMRP: 1,
             },
           },
