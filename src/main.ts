@@ -12,7 +12,7 @@ async function bootstrap() {
   );
   // app.enableCors(); // This will allow any origin to access the API
   app.enableCors({
-    origin: 'https://g00n.vercel.app/', // This will allow only the specified origin to access the API
+    origin: 'https://g00n.vercel.app', // This will allow only the specified origin to access the API
     credentials: true, // This will allow cookies to be sent from the specified origin
   });
   await app.listen(5000);
