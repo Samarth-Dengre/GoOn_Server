@@ -7,7 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
-import { SeedModule } from './seeds/seed.module';
+// import { SeedModule } from './seeds/seed.module';
 
 @Module({
   imports: [
@@ -23,7 +23,7 @@ import { SeedModule } from './seeds/seed.module';
     ),
     ProductsModule,
     OrdersModule,
-    SeedModule,
+    // SeedModule,
   ],
   controllers: [],
   providers: [],
