@@ -126,7 +126,7 @@ export class OrdersService {
         return res.status(400).json({ msg: ['Invalid order id'] });
       }
       order.orderUser = undefined;
-      return res.status(200).json(order );
+      return res.status(200).json(order);
     } catch (err) {
       console.log(err);
       return res.status(500).json({ msg: ['Server error'] });
