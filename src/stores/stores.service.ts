@@ -34,7 +34,7 @@ export class StoresService {
             productImage: {
               $arrayElemAt: ['$productImage', 0],
             },
-            productRating: 1,
+            productrating: 1,
           },
           model: 'Product',
         });
