@@ -8,17 +8,20 @@ import {
   UseGuards,
   Req,
   Post,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { Response, Request } from 'express';
 import { JwtGuard } from 'src/auth/guard';
 import { Rate_Product_Dto } from './dto';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   // This is the route for getting the products by id
+  @UseInterceptors(CacheInterceptor)
   @Get(':id')
   async getProductById(
     @Param('id') id: string,

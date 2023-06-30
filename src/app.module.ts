@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
+import { CacheModule } from '@nestjs/cache-manager';
 // import { SeedModule } from './seeds/seed.module';
 
 @Module({
@@ -15,15 +16,20 @@ import { OrdersModule } from './orders/orders.module';
     CategoriesModule,
     AuthModule,
     UserModule,
+    ProductsModule,
+    OrdersModule,
+    // SeedModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
     MongooseModule.forRoot(
       'mongodb+srv://dengresamarth113:UzCYILEOOIbBlxUA@cluster0.16ixmkw.mongodb.net/GoOn',
     ),
-    ProductsModule,
-    OrdersModule,
-    // SeedModule,
+    CacheModule.register({
+      ttl: 1800000,
+      max: 100, // maximum number of items in cache
+      isGlobal: true,
+    }),
   ],
   controllers: [],
   providers: [],
