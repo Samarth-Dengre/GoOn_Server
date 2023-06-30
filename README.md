@@ -1,73 +1,279 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## GoOn
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Go.On is the perfect platform for your online shopping needs,
+offering a unique and innovative approach to ecommerce. With
+Go.On, we empower users to choose the shop from which they want to
+shop, giving them the flexibility and freedom to explore a wide
+range of options.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Tech Stack
 
-## Description
+**Client:** NextJS(13.4), Typescript
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+**Server:** NodeJS, NestJS, MongoDB
 
-## Installation
+**Frontend Repo:** https://github.com/Samarth-Dengre/GoOn_Client
+
+## Run Locally
+
+Clone the project
 
 ```bash
-$ yarn install
+  git clone https://github.com/Samarth-Dengre/GoOn_Server my-project
 ```
 
-## Running the app
+Go to the project directory
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+  cd my-project
 ```
 
-## Test
+Install dependencies
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+  npm install
 ```
 
-## Support
+Start the server
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+  npm start
+```
 
-## Stay in touch
+## Environment Variables
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+To run this project, you will need to add the following environment variables to your .env file
 
-## License
+`DATABASE_URL`
 
-Nest is [MIT licensed](LICENSE).
+`JWT_SECRET`
+
+# API Reference
+
+### Seeding database endpoint
+
+- **URL**: `/seeds`
+- **Method**: `GET`
+- **Description**: This endpoint is to seed the database. By default, this route is disabled. To enable it, you need to go to app.module.ts and uncomment the import.
+
+### Signup Endpoint
+
+- **URL**: `/auth/signup`
+- **Method**: `POST`
+- **Description**: This endpoint is for the signup of new user
+- **Body**:
+  - `userName` (type: string, required)
+  - `email` (type: string, required)
+  - `password` (type: string, required)
+  - `confirmPassword` (type: string, required)
+- **Response**:
+  - **Status Code**: 201 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | message | Array | ['Signed up successfully'] |
+
+### Login Endpoint
+
+- **URL**: `/auth/login`
+- **Method**: `POST`
+- **Description**: This endpoint is for login
+- **Body**:
+  - `email` (type: string, required)
+  - `password` (type: string, required)
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:  
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | message | Array | ['Logged in successfully'] |
+    | user | object | |
+    | token | string | |
+    | cartSize| number| |
+
+### Validate Token Endpoint
+
+- **URL**: `/auth/login`
+- **Method**: `GET`
+- **Description**: This endpoint is used to validate and refresh the token stored in localstorage to authenticate user without logging in again.
+- **Headers**:
+  | Key | Type | Value |
+  |-------|-----------|------|
+  | authentication | string | 'Bearer YOUR_TOKEN' |
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:  
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | message | Array | ['Logged in successfully'] |
+    | user | object | |
+    | token | string | |
+    | cartSize| number| |
+
+### Fetch All Stores Endpoint
+
+- **URL**: `/stores`
+- **Method**: `GET`
+- **Description**: This endpoint is to fetch all the stores
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type |
+    |-------|----------|
+    | stores| Array |
+
+### Fetch stores by category
+
+- **URL**: `/categories/?category="CATEGORY"`
+- **CATEGORY**:
+  |category|for|
+  |-|-|
+  |1|electronics|
+  |2|fashion|
+  |3|grocery|
+  |4|furniture|
+  |5|mobile-laptops|
+  |7|beauty|
+  |8|home-kitchen|
+  |9|footwear|
+- **Method**: `GET`
+- **Description**: This endpoint is to fetch stores by category
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | message | string | 'Stores fetched successfully' |
+    |categoryStores| Array| |
+
+### Fetch store by id
+
+- **URL**: `/stores/id`
+- **Method**: `GET`
+- **Description**: This endpoint is for fetching store by id
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | message | string | 'Signed up successfully' |
+    |store|object||
+
+### Fetch Product By id and store_id
+
+- **URL**: `/products/id/?store_id="STORE_ID`
+- **Method**: `GET`
+- **Description**: This endpoint is for fetching store by id
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | msg | string | 'Signed up successfully' |
+    |store|object||
+
+### Rate The product
+
+- **URL**: `/products/rate`
+- **Method**: `POST`
+- **Description**: This endpoint is to rate a product
+- **Headers**:
+  | Key | Type | Value |
+  |-------|-----------|------|
+  | authentication | string | 'Bearer YOUR_TOKEN' |
+- **Body**:
+  - `product_id` (type: string, required)
+  - `rating` (type: number, required)
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | msg | array | ['Product rated successfully'] |
+
+### Add Product to Cart
+
+- **URL**: `/users/cart`
+- **Method**: `POST`
+- **Description**: This endpoint is to add a product to cart
+- **Headers**:
+  | Key | Type | Value |
+  |-------|-----------|------|
+  | authentication | string | 'Bearer YOUR_TOKEN' |
+- **Body**:
+  - `product` (type: string, required)
+  - `quantity` (type: number, required)
+  - `seller` (type: string, required)
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | message | array | ['Cart updated successfully!'] |
+
+### Fetch the cart
+
+- **URL**: `/users/cart`
+- **Method**: `GET`
+- **Description**: This endpoint is to add a product to cart
+- **Headers**:
+  | Key | Type | Value |
+  |-------|-----------|------|
+  | authentication | string | 'Bearer YOUR_TOKEN' |
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | message | array | ['Cart retrieved successfully!'] |
+
+### Place Order
+
+- **URL**: `/orders`
+- **Method**: `POST`
+- **Description**: This endpoint is to place the order for items in cart
+- **Headers**:
+  | Key | Type | Value |
+  |-------|-----------|------|
+  | authentication | string | 'Bearer YOUR_TOKEN' |
+- **Body**:
+  - `modeOfPayment` (type: string, required)
+  - `deliveryAddress` (type: object, required)
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type | Value |
+    |-------|-----------|------|
+    | msg | array | ['Order Placed Successsfully'] |
+
+### Fetch all orders
+
+- **URL**: `/orders`
+- **Method**: `GET`
+- **Description**: This endpoint is to fetch all the orders placed by user
+- **Headers**:
+  | Key | Type | Value |
+  |-------|-----------|------|
+  | authentication | string | 'Bearer YOUR_TOKEN' |
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type |
+    |-------|----------|
+    | orders | array |
+
+### Fetch order details by id
+
+- **URL**: `/orders/id`
+- **Method**: `GET`
+- **Description**: This endpoint is to rate a product
+- **Headers**:
+  | Key | Type | Value |
+  |-------|-----------|------|
+  | authentication | string | 'Bearer YOUR_TOKEN' |
+- **Response**:
+  - **Status Code**: 200 (OK)
+  - **Body**:
+    | Key | Type |
+    |-------|-----------|
+    | order | object |
