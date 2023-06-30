@@ -9,7 +9,7 @@ import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 import { CacheModule } from '@nestjs/cache-manager';
 // import { SeedModule } from './seeds/seed.module';
-
+import 'dotenv/config';
 @Module({
   imports: [
     StoresModule,
@@ -22,9 +22,7 @@ import { CacheModule } from '@nestjs/cache-manager';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(
-      'mongodb+srv://dengresamarth113:UzCYILEOOIbBlxUA@cluster0.16ixmkw.mongodb.net/GoOn',
-    ),
+    MongooseModule.forRoot(process.env.DATABASE_URL),
     CacheModule.register({
       ttl: 1800000,
       max: 100, // maximum number of items in cache
